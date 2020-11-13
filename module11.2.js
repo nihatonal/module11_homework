@@ -1,14 +1,16 @@
 function isPrime(num) {
     if (num > 1000) {
-      console.log(
-        "Please, provide a number less than 1000"
-      );
+      return "Please, provide a number less than 1000";
     } else if (num <= 1 ) {
       return "Primes are integers greater than ONE";
-    } else if (num % 2 === 0) {
-      return num + " : It is a Prime";
     } else {
-      return num + " : Sorry, it is not a Prime";
+      let isPrime = true;
+      for (let i = 2; i < num; i++) {
+        if(num % i === 0) {
+          isPrime = false;
+        }
+      }
+      return isPrime? num + " : It is a Prime" : num + " : Sorry, it is not a Prime";
     }
   }
   var a = 1;
@@ -17,3 +19,8 @@ function isPrime(num) {
   console.log(isPrime(a));
   console.log(isPrime(b));
   console.log(isPrime(c));
+
+  // Задание выполнено неправильно: неверно прописано условие опредления, простое число или нет. Простое число - это число, которое делится без остатка только на само себя и на 1. Если у числа есть какие-то другие делители, оно не является простым. У вас же получается, что число является простым, только если делится на 2. Выше исправила на верный вариант решения
+  // Также есть пару замечаний:
+  // 1. Поведение функции должно быть одинаковым для всех вводных данных. Если функция возвращает строку, то будет логично, если она во всех случаях будет возвращать строку, а у вас сейчас в случае, если число больше 1000, результат сразу выводится в консоль.
+  // 2. Старайтесь не использовать для объявления переменных ключевое слово var, это устаревший синтаксис. Лучше использовать более современный операторы let и const
